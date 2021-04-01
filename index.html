@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html ng-app="dataApprovalApp">
+
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>Data Approval App</title>
+
+    <script type="text/javascript"></script>
+    <script type="text/javascript" src="scripts/lib/jQuery/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/lib/jQuery/ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="scripts/lib/jQuery/jquery.plugin.min.js"></script>
+    <script type="text/javascript" src="scripts/lib/jQuery/jquery.tmpl.js"></script>
+    <script type="text/javascript" src="scripts/lib/commons/ouwt/ouwt.js"></script>
+
+    <script type="text/javascript" src="scripts/lib/bootstrap/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="scripts/lib/bootstrap/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="scripts/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="scripts/lib/angular/angular-resource.js"></script>
+    <script type="text/javascript" src="scripts/lib/angular/angular-route.js"></script>
+    <script type="text/javascript" src="scripts/lib/angular/angular-cookies.js"></script>
+    <script type="text/javascript" src="scripts/lib/angular/angular-animate.js"></script>
+    <script type="text/javascript" src="scripts/lib/angular/angular-messages.js"></script>
+    <script type="text/javascript" src="scripts/lib/angular/angular-sanitize.js"></script>
+    <script type="text/javascript" src="scripts/lib/angular/ui-bootstrap-tpls-0.14.0.js"></script>
+    <script type="text/javascript" src="scripts/lib/angular/plugins/angular-translate.min.js"></script>
+    
+    
+    <!--calender-->
+    <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.min.js"></script>
+    <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.picker.min.js"></script>
+    <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.plus.min.js"></script>
+    <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.picker.ext.js"></script>
+
+    <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.coptic.min.js"></script>
+    <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.ethiopian.min.js"></script>
+    <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.islamic.min.js"></script>
+    <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.julian.min.js"></script>
+    <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.nepali.min.js"></script>
+    <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.thai.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/javascripts/jQuery/ui/css/redmond/jquery-ui.css">
+    <link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/javascripts/jQuery/calendars/css/ui-redmond.calendars.picker.css">
+
+    <!--cal ends-->
+    <script type="text/javascript" src="scripts/lib/commons/dhis2.util.js"></script>
+    <script type="text/javascript" src="scripts/lib/commons/commons.js"></script>
+    <script type="text/javascript" src="scripts/lib/commons/commons.ajax.js"></script>
+    
+
+
+    <script type="text/javascript" src="scripts/lib/commons/dhis2.angular.filters.js"></script>
+    <script type="text/javascript" src="scripts/lib/commons/dhis2.angular.directives.js"></script>
+    <script type="text/javascript" src="scripts/lib/commons/dhis2.angular.services.js"></script>
+
+    <script type="text/javascript" src="scripts/lib/commons/dhis2.storage.ss.js"></script>
+    <script type="text/javascript" src="scripts/lib/commons/dhis2.storage.ls.js"></script>
+    <script type="text/javascript" src="scripts/lib/commons/dhis2.storage.idb.js"></script>
+    <script type="text/javascript" src="scripts/lib/commons/dhis2.storage.memory.js"></script>
+    <script type="text/javascript" src="scripts/lib/commons/dhis2.storage.js"></script>
+
+    <script type="text/javascript" src="scripts/lib/commons/dhis2.translate.js"></script>
+    <script type="text/javascript" src="scripts/lib/commons/dhis2.menu.js"></script>
+    <script type="text/javascript" src="scripts/lib/commons/dhis2.menu.ui.js"></script>
+
+    <link type="text/css" rel="stylesheet" media="screen" href="scripts/lib/commons/css/menu.css">
+    <link type="text/css" rel="stylesheet" media="screen" href="scripts/lib/commons/css/widgets.css">
+
+
+    <link type="text/css" rel="stylesheet" media="screen" href="styles/style.css">
+
+    <script type="text/javascript" src="scripts/app.js"></script>
+    <script type="text/javascript" src="scripts/services.js"></script>
+    <script type="text/javascript" src="scripts/home-controller.js"></script>
+    <script type="text/javascript" src="scripts/leftbar-menu-controller.js"></script>
+    <script type="text/javascript" src="scripts/applications-approval-controller.js"></script>
+    <script type="text/javascript" src="scripts/approved-list-controller.js"></script>
+    <script type="text/javascript" src="scripts/audit-report-controller.js"></script>
+    <script type="text/javascript" src="scripts/rejected-list-controller.js"></script>
+    <script type="text/javascript" src="scripts/lib/moment/moment.js"></script>
+    <script type="text/javascript" src="scripts/lib/moment/filesaver.js"></script>
+
+    
+  </head>
+
+  <body>
+    <!-- Menu dependencies -->
+    <script type="text/javascript" src="../../../dhis-web-core-resource/react-15/react-15.min.js"></script>
+    <script type="text/javascript" src="../../../dhis-web-core-resource/rxjs/4.1.0/rx.lite.min.js"></script>
+    <script type="text/javascript" src="../../../dhis-web-core-resource/lodash/4.15.0/lodash.min.js"></script>
+    <script type="text/javascript" src="../../../dhis-web-core-resource/lodash-functional/lodash-functional.js"></script>
+    
+    <script type="text/javascript" src="../../../dhis-web-commons/javascripts/header-bar/babel-polyfill.js?_rev=0.1.7"></script>
+    <script type="text/javascript" src="../../../dhis-web-commons/javascripts/header-bar/header-bar.js?_rev=0.1.7"></script>
+    
+    
+    <div id="header">
+      <img id="headerBanner" src="../../../api/staticContent/logo_banner" onclick="window.location.href='../dhis-web-commons-about/redirect.action'" style="cursor:pointer" title="View home page">
+      
+      <div id="dhisDropDownMenu"></div>
+    </div>
+
+    <script>
+      
+      window.onload = function(){
+      /* Menu Bar */
+      try {
+      if ('Dhis2HeaderBar' in window) {
+      Dhis2HeaderBar.initHeaderBar(document.querySelector('#header'), '../../../api', { noLoadingIndicator: true });
+      }
+      } catch (e) {
+      if ('console' in window) {
+      console.error(e);
+      }
+      }
+      
+      /********/
+      }
+    </script>
+    <!-- // End menu -->
+
+    
+    <div class="main">
+      
+      <div class="left">
+        <div>
+          <a href="index.action" title="{{'show_main_menu'| translate}}" id="showMainMenuLink">
+            <i class="fa fa-home leftBarIcon"></i>
+          </a>
+          <a href="javascript:dhis2.leftBar.hideAnimated()" title="{{'hide_menu'| translate}}" id="hideMainMenuLink">
+            <i class="fa fa-arrow-left leftBarIcon"></i>
+          </a>
+          <a href="javascript:dhis2.leftBar.extendAnimated()" title="{{'extend_menu'| translate}}" id="extendMainMenuLink">
+            <i class="fa fa-arrow-right leftBarIcon"></i>
+          </a>
+        </div>
+        <div class="left-bar-menu" ng-controller="LeftBarMenuController">
+          <ul class="nav nav-pills nav-stacked">
+            <li>
+              <a href ng-click="applicationsForApproval()">{{"Applications For Approval"| translate}}</a><br>
+              <a href ng-click="approvedList()">{{"Approved List"| translate}}</a><br>
+              <a href ng-click="rejectedList()">{{"Rejected List"| translate}}</a><br>
+              <a href ng-click="auditReport()">{{"Audit Report"| translate}}</a><br>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div id="orgUnitTree" class="leftOU" style="display:none">
+
+        <ul>
+        </ul>
+      </div>
+      <div ng-view class="mainDiv"></div>
+      
+    </div>
+    <script type="text/javascript" src="scripts/lib/jQuery/xlsx.core.js"></script>
+    <script type="text/javascript" src="scripts/lib/jQuery/FileSaver.js"></script>
+    <script type="text/javascript" src="scripts/lib/jQuery/tableexport.js"></script>
+  </body>
+
+</html>

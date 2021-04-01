@@ -1,0 +1,125 @@
+
+   
+
+<div id="mainPage">
+    <div class="">
+        <div class="">
+            <table class="table table-borderless table-striped">
+                <tr>
+                    <td>{{'orgUnitLabel' | translate}}</td>
+                    <td>
+                        <input type="text" class="form-control" value="{{selectedOrgUnit.name|| 'please_select'| translate}}"
+                            ng-disabled="true">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        {{'programs'| translate}}
+                    </td>
+                    <td class=''>
+                        <select ng-model="selectedProgram" class="form-control" ng-options="program.name for program in programs | orderBy: 'name'"
+                            ng-change="getProgramStages(selectedProgram)">
+                            <!--ng-disabled="selectedOrgUnit.programs.length < 1">-->
+                            <option value="">{{'Please select program'| translate}}</option>
+                        </select>
+                    </td>
+                    <td>
+                        {{'program_stage'| translate}}
+                    </td>
+                    <td class=''>
+                        <select ng-model="selectedProgramStage" class="form-control" ng-options="programStage.name for programStage in programStages | orderBy: 'name'"
+                            ng-change="getSelectedProgramStage(selectedProgramStage)">
+                            <option value="">{{'Please select program stage'| translate}}</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Check to filter by Dates</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" ng-model="checked">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label ng-show="checked">Start Date </label>
+                    </td>
+                    <td>
+                        <input calendar ng-model='startdate' id="startDate" ng-show="checked" class="form-control"
+                            ng-change="updateStartDate(startdate);" required />
+                    </td>
+                    <td>
+                        <label ng-show="checked">End Date </label>
+                    </td>
+                    <td>
+                        <input calendar ng-model='enddate' id="endDate" ng-show="checked" class="form-control"
+                            ng-change="updateEndDate(enddate);" required />
+                    </td>
+                </tr>
+
+            </table>
+
+            <div class="">
+                <button type="button" class="btn btn-primary center-block" ng-click="resubmitData(selectedProgram, report, selectedOuMode);showLoad();"
+                    ng-disabled="!selectedProgram">{{'fetch_records'| translate}}</button>
+            </div>
+
+        </div>
+
+        <div class="loading" id="loader">Loading&#8230;</div>
+        <div id="divId" class="container" style="margin-left: 2px">
+            <table id="tableid" border="1" class="table table-hover">
+                <tr>
+                    <th colspan="{{3}}">{{attribute}}</th>
+                    <th ng-repeat="ps in selectedPS" colspan="{{ps.programStageDataElements.length+3}}">{{ps.name}}</th>
+
+                </tr>
+                <tr style="background-color:rgb(211, 207, 201)">
+                    <th>
+                        {{event_date}}
+                    </th>
+                    <th>
+                        {{attribute1}}
+                    </th>
+                    <th ng-repeat="de in psDEs">{{de.dataElement.name}}</th>
+                    <th style="padding-left:36px;padding-right:36px;">
+                        {{approved_reject}}
+                    </th>
+                </tr>
+
+
+                <tbody>
+                    <tr ng-repeat="event in valuesToDisplay" class="rowClass" ng-style="{'background-color': event.color}">
+                        <td>
+                            {{event.eventDate}}
+                        </td>
+                        <td>
+                            {{event.attributeValues0}}
+                        </td>
+                        <td>
+                            {{event.eventOrgUnitName}}
+                        </td>
+
+                        <td ng-repeat="eventValue in event.allEventDataValues track by $index">{{eventValue}}</td>
+                        <td>
+                            <button style="font-size:10pt;color:white;
+                            background-color:green;border:2px solid #336600;padding:3px;width: 75px; margin-top: 1.5%; height: 40px; text-align: center;"
+                                id={{event.eventId}} _Approved ng-click="confirmPush($event,event.eventId,selectedProgram,event);">Approve</button>
+                            <button style="font-size:10pt;color:white;
+                            background-color:red;border:2px solid #336600;padding:3px;width: 75px; margin-top: 1.5%; height: 40px; text-align: center;"
+                                id={{event.eventId}} _Reject ng-click="confirmPush($event,event.eventId,selectedProgram,event);">Reject</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <div class="row" ng-if="selectedOrgUnit.programs.length > 0 && !selectedProgram">
+        <div class="col-sm-8 col-md-6 vertical-spacing">
+            <div class="alert alert-warning">{{'Please select program'| translate}}</div>
+        </div>
+    </div>
+</div>
